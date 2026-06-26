@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BatiDevis
 
-## Getting Started
+SaaS en marque blanche permettant aux professionnels du bâtiment de proposer un outil de devis approximatif en ligne à leurs clients.
 
-First, run the development server:
+## Stack technique
+
+- **Frontend** : Next.js 16 (App Router) + Tailwind CSS v4 + Shadcn/ui
+- **Auth + BDD + Storage** : Supabase
+- **Emails** : Resend
+- **PDF** : React PDF
+- **Paiements** : Stripe
+- **Déploiement** : Vercel
+- **i18n** : next-intl (français au lancement)
+
+## Démarrage en local
+
+### Prérequis
+
+- Node.js 18+
+- npm
+- Un projet Supabase créé sur [supabase.com](https://supabase.com)
+
+### Installation
+
+```bash
+git clone https://github.com/TON_USERNAME/batidevis.git
+cd batidevis
+npm install
+```
+
+### Variables d'environnement
+
+```bash
+cp .env.example .env.local
+```
+
+Remplis les valeurs dans `.env.local` — voir `.env.example` pour la liste complète.
+
+### Lancer le serveur de développement
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure du projet
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+src/
 
-## Learn More
+├── app/
 
-To learn more about Next.js, take a look at the following resources:
+│   └── [locale]/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+│       ├── (marketing)/     # Pages publiques (accueil, pricing, login...)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+│       ├── (dashboard)/     # Espace privé du pro (auth requise)
 
-## Deploy on Vercel
+│       └── [slug]/          # Espace client public du pro
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+├── components/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+│   ├── ui/                  # Composants Shadcn/ui
+
+│   ├── marketing/           # Composants pages marketing
+
+│   ├── dashboard/           # Composants dashboard
+
+│   ├── client/              # Composants espace client [slug]
+
+│   └── shared/              # Composants partagés
+
+├── lib/
+
+│   ├── supabase/            # Clients Supabase (browser, server, middleware)
+
+│   ├── config.ts            # Variables d'environnement centralisées
+
+│   ├── constants.ts         # Constantes métier
+
+│   └── utils.ts             # Utilitaires (cn...)
+
+├── hooks/                   # Hooks React custom
+
+├── i18n/                    # Configuration next-intl
+
+├── types/                   # Types TypeScript globaux
+
+└── proxy.ts                 # Middleware Next.js 16 (auth + i18n)
+
+## Développement
+
+### Commandes disponibles
+
+| Commande        | Description                          |
+|-----------------|--------------------------------------|
+| `npm run dev`   | Serveur de développement (Turbopack) |
+| `npm run build` | Build de production                  |
+| `npm run start` | Serveur de production                |
+| `npm run lint`  | Vérification ESLint                  |
+
+### Conventions
+
+- Fichiers, dossiers, variables, fonctions → **anglais**
+- Contenu affiché à l'utilisateur → **français**
+- Commentaires dans le code → **français**
+- Pages et layouts Next.js → `export default function`
+- Composants réutilisables → `const X = () =>`
+
+## Roadmap
+
+Voir la documentation complète du projet dans `generer_devis_approximatif.md`.
