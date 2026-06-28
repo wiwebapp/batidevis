@@ -47,6 +47,7 @@ Ouvre [http://localhost:3000](http://localhost:3000).
 ## Structure du projet
 
 src/
+
 ├── app/
 
 │   └── [locale]
