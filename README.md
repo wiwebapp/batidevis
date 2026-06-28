@@ -48,8 +48,11 @@ Ouvre [http://localhost:3000](http://localhost:3000).
 
 src/
 ├── app/
+
 │   └── [locale]
+
 │       ├── (marketing)
+
 ├── app/
 
 │   └── [locale]/
@@ -88,9 +91,7 @@ src/
 
 ├── types/                   # Types TypeScript globaux
 
-## Développement
-
-### Commandes disponibles
+## Commandes disponibles
 
 | Commande        | Description                          |
 |-----------------|--------------------------------------|
