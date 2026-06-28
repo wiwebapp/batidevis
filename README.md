@@ -47,45 +47,25 @@ Ouvre [http://localhost:3000](http://localhost:3000).
 ## Structure du projet
 
 src/
-
 ├── app/
-
-│   └── [locale]/
-
+│   └── [locale]
 │       ├── (marketing)/     # Pages publiques (accueil, pricing, login...)
-
 │       ├── (dashboard)/     # Espace privé du pro (auth requise)
-
 │       └── [slug]/          # Espace client public du pro
-
 ├── components/
-
 │   ├── ui/                  # Composants Shadcn/ui
-
 │   ├── marketing/           # Composants pages marketing
-
 │   ├── dashboard/           # Composants dashboard
-
 │   ├── client/              # Composants espace client [slug]
-
 │   └── shared/              # Composants partagés
-
 ├── lib/
-
 │   ├── supabase/            # Clients Supabase (browser, server, middleware)
-
 │   ├── config.ts            # Variables d'environnement centralisées
-
 │   ├── constants.ts         # Constantes métier
-
 │   └── utils.ts             # Utilitaires (cn...)
-
 ├── hooks/                   # Hooks React custom
-
 ├── i18n/                    # Configuration next-intl
-
 ├── types/                   # Types TypeScript globaux
-
 └── proxy.ts                 # Middleware Next.js 16 (auth + i18n)
 
 ## Développement
